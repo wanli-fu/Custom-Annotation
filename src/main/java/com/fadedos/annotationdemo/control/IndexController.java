@@ -1,6 +1,8 @@
 package com.fadedos.annotationdemo.control;
 
 import com.fadedos.annotationdemo.annotation.LoginRequired;
+import com.fadedos.annotationdemo.annotation.MyLog;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,5 +22,11 @@ public class IndexController {
     @LoginRequired
     public String sourceB() {
         return "你正在访问B资源";
+    }
+
+    @RequestMapping("/sourceC/{source_name}/{size}")
+    @MyLog
+    public String sourceC(@PathVariable("source_name") String sourceName,@PathVariable("size") Integer size) {
+        return "你正在访问C资源";
     }
 }
